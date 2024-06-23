@@ -48,6 +48,7 @@
 
 (add-to-list 'load-path (expand-file-name "extensions" user-emacs-directory))
 
+(require 'setup-colors)
 (require 'setup-company)
 (require 'setup-completion)
 (require 'setup-org)
@@ -110,22 +111,6 @@
 
 ;; an interface to the version control system git... aspires to be a complete git porcelain
 (use-package magit :ensure t :defer t)
-
-;; DOOM EMACS
-(use-package doom-themes
-	:ensure t
-	:config
-	(setq doom-themes-enable-bold   t)    ;; if nil, bold    is universally disabled
-	(setq doom-themes-enable-italic t)    ;; if nil, italics is universally disabled
-;;	(load-theme 'doom-homage-white  t)
-	(doom-themes-org-config)              ;; Corrects (and improves) org-mode's native fontification.
-)
-
-
-(use-package gruber-darker-theme :ensure t)
-(use-package leuven-theme        :ensure t)
-(use-package modus-themes        :ensure t)
-(use-package moe-theme           :ensure t)
 
 (set-face-italic 'font-lock-comment-face nil)
 (set-face-bold-p 'bold                   nil)
