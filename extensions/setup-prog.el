@@ -37,7 +37,7 @@
 		(rust   "https://github.com/tree-sitter/tree-sitter-rust"    )
 	 )
 )
-(setq treesit-extra-load-path '("~/.emacs.d/onncera-language-grammars"))
+(setq treesit-extra-load-path '("~/.emacs.d/emacs-language-grammars"))
 
 
 
