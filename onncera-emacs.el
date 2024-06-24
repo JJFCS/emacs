@@ -48,9 +48,11 @@
 
 (add-to-list 'load-path (expand-file-name "extensions" user-emacs-directory))
 
+(require 'setup-checkers)
 (require 'setup-colors)
 (require 'setup-company)
 (require 'setup-completion)
+(require 'setup-etcetera)
 (require 'setup-org)
 
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups" user-emacs-directory))))  ;; set the directory for backup files
@@ -99,26 +101,11 @@
 			   )
 )
 
-(use-package undo-tree
-	:ensure t
-	:config
-	(global-undo-tree-mode 1)
-	(setq undo-tree-history-directory-alist '(
-							("." . "~/.cache/emacs-undo")
-						 )
-	)
-)
 
-;; an interface to the version control system git... aspires to be a complete git porcelain
-(use-package magit :ensure t :defer t)
+
 
 (set-face-italic 'font-lock-comment-face nil)
 (set-face-bold-p 'bold                   nil)
 
-;; modeline
-(use-package doom-modeline :ensure t :init (setq doom-modeline-height 30) (doom-modeline-mode 1))
-
-;; rainbow delimiters:
-;; 	color delimiters such as parentheses, brackets or braces according to their depth
-;;		each successive level is highlighted in a different color for easy spot matching of delimiters
-(use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
+;; an interface to the version control system git... aspires to be a complete git porcelain
+(use-package magit :ensure t :defer t)

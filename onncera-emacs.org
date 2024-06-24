@@ -70,9 +70,11 @@
 #+end_src
 
 #+begin_src emacs-lisp
+	(require 'setup-checkers)
 	(require 'setup-colors)
 	(require 'setup-company)
 	(require 'setup-completion)
+	(require 'setup-etcetera)
 	(require 'setup-org)
 #+end_src
 
@@ -129,20 +131,14 @@
 				   )
 	)
 
-#+end_src
 
 
-* UNDO-TREE ---> SOA
-#+begin_src emacs-lisp
-	(use-package undo-tree
-		:ensure t
-		:config
-		(global-undo-tree-mode 1)
-		(setq undo-tree-history-directory-alist '(
-								("." . "~/.cache/emacs-undo")
-							 )
-		)
-	)
+
+	(set-face-italic 'font-lock-comment-face nil)
+	(set-face-bold-p 'bold                   nil)
+
+
+
 #+end_src
 
 
@@ -151,27 +147,6 @@
 	;; an interface to the version control system git... aspires to be a complete git porcelain
 	(use-package magit :ensure t :defer t)
 #+end_src
-
-
-* MISCELLANEOUS = TODO - emacs's Find File Function customization
-#+begin_src emacs-lisp
-
-	(set-face-italic 'font-lock-comment-face nil)
-	(set-face-bold-p 'bold                   nil)
-
-	;; modeline
-	(use-package doom-modeline :ensure t :init (setq doom-modeline-height 30) (doom-modeline-mode 1))
-
-	;; rainbow delimiters:
-	;; 	color delimiters such as parentheses, brackets or braces according to their depth
-	;;		each successive level is highlighted in a different color for easy spot matching of delimiters
-	(use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
-
-
-
-
-#+end_src
-
 
 
 
