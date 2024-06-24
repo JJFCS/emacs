@@ -85,21 +85,6 @@
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	(require 'setup-checkers)
-	(require 'setup-colors)
-	(require 'setup-company)
-	(require 'setup-completion)
-	(require 'setup-lang)
-	(require 'setup-lsp)
-	(require 'setup-magit)
-	(require 'setup-miscellaneous)
-	(require 'setup-org)
-	(require 'setup-prog)
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; EMACS GENERAL SETTINGS - SANE DEFAULTS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups" user-emacs-directory))))  ;; set the directory for backup files
@@ -155,6 +140,18 @@
 
 
 
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	(require 'setup-completion)
+	(require 'setup-company)
+	(require 'setup-lsp)
+	(require 'setup-prog)
+	(require 'setup-lang)
+	(require 'setup-checkers)
+	(require 'setup-magit)
+	(require 'setup-miscellaneous)
+	(require 'setup-org)
+	(require 'setup-colors)
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
@@ -162,6 +159,21 @@
 
 
 
-(custom-set-variables '(custom-enabled-themes '(wombat)))
-(custom-set-faces '(default ((t (:family "MartianMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width condensed)))))
+
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(wombat))
+ '(package-selected-packages
+   '(rainbow-delimiters org-bullets undo-tree magit lsp-ui lsp-mode wgrep vertico marginalia embark-consult orderless company moe-theme modus-themes leuven-theme gruber-darker-theme doom-themes flycheck)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "MartianMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width condensed)))))
 
