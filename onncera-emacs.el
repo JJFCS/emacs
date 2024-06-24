@@ -56,9 +56,12 @@
 (require 'setup-colors)
 (require 'setup-company)
 (require 'setup-completion)
+(require 'setup-lang)
+(require 'setup-lsp)
 (require 'setup-magit)
 (require 'setup-miscellaneous)
 (require 'setup-org)
+(require 'setup-prog)
 
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups" user-emacs-directory))))  ;; set the directory for backup files
 (setq auto-save-default nil auto-save-list-file-prefix nil)  ;; disable auto-saving, ensuring emacs does not create the auto-save directory
@@ -105,8 +108,6 @@
 				(load-theme 'modus-vivendi-tritanopia t)
 			   )
 )
-
-
 
 
 (set-face-italic 'font-lock-comment-face nil)

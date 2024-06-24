@@ -79,9 +79,12 @@
 	(require 'setup-colors)
 	(require 'setup-company)
 	(require 'setup-completion)
+	(require 'setup-lang)
+	(require 'setup-lsp)
 	(require 'setup-magit)
 	(require 'setup-miscellaneous)
 	(require 'setup-org)
+	(require 'setup-prog)
 #+end_src
 
 
@@ -138,12 +141,8 @@
 	)
 
 
-
-
 	(set-face-italic 'font-lock-comment-face nil)
 	(set-face-bold-p 'bold                   nil)
-
-
 
 #+end_src
 
