@@ -1,15 +1,15 @@
 
 
+
 	;; -*- lexical-binding: t; -*-
+
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;; [[ TODO COOL THINGS TO INCLUDE INTO OUR EMACS CONFIGURATION IN THE FUTURE ]]
 	;;
 	;; [[ PLUGINS TO INCLUDE ]]
-	;;	DEVDOCS
-	;;	CURSORS - MULTIPLE
-	;;	YASSSSS
+	;;	DEVDOCS, EXPAND REGION, MULTIPLE CURSORS, YASSSSS
 	;;
 	;; [[ MULTIPLE CURSORS ---> TSODING CONFIG... TAKE INSPIRATION FROM KEYBINDINGS ]]
 	;; 	(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -40,9 +40,6 @@
 	;;
 	;; [[ FIND FILE (DOTFILES FOLLOWED BY EVERYTHING ELSE IN ALPHABETICAL ORDER) ]]
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
 
 
 
