@@ -22,6 +22,7 @@
 (use-package lsp-mode
 	:config
 	(setq lsp-diagnostics-provider :flycheck) (setq lsp-idle-delay 0.100)
+	(setq lsp-ccls-executable "/opt/homebrew/bin/ccls")  ;; PATH TO CCLS EXECUTABLE
 	(setq read-process-output-max (* 1024 1024))
 
 	:ensure t :hook (c-mode c++-mode objc-mode python-ts-mode)
