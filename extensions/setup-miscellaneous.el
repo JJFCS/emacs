@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;  - TODO ---> FIND FILE (DOTFILES FOLLOWED BY EVERYTHING ELSE IN ALPHABETICAL ORDER)
+;;  - PLACEHOLDER
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -17,17 +17,11 @@
 )
 
 
-
-;; modeline
-;; (use-package doom-modeline :ensure t :init (setq doom-modeline-height 30) (doom-modeline-mode 1))
-
-
-;; rainbow delimiters:
-;; 	color delimiters such as parentheses, brackets or braces according to their depth
-;;		each successive level is highlighted in a different color for easy spot matching of delimiters
+;; color delimiters such as parentheses, brackets or braces according to their depth
+;; each successive level is highlighted in a different color for easy spot matching of delimiters
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
 
 
 
-(provide 'setup-etcetera)
+(provide 'setup-miscellaneous)
 

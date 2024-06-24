@@ -27,6 +27,10 @@
 ;; 		(toggle-word-wrap 1))
 ;; 	(add-hook 'markdown-mode-hook 'rc/enable-word-wrap)
 
+
+
+;;  - TODO ---> FIND FILE (DOTFILES FOLLOWED BY EVERYTHING ELSE IN ALPHABETICAL ORDER)
+
 ;; -*- lexical-binding: t; -*-
 
 (require 'package)
@@ -52,7 +56,8 @@
 (require 'setup-colors)
 (require 'setup-company)
 (require 'setup-completion)
-(require 'setup-etcetera)
+(require 'setup-magit)
+(require 'setup-miscellaneous)
 (require 'setup-org)
 
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups" user-emacs-directory))))  ;; set the directory for backup files
@@ -106,6 +111,3 @@
 
 (set-face-italic 'font-lock-comment-face nil)
 (set-face-bold-p 'bold                   nil)
-
-;; an interface to the version control system git... aspires to be a complete git porcelain
-(use-package magit :ensure t :defer t)
