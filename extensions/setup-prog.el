@@ -13,8 +13,8 @@
 ;;  		- can build a concrete syntax tree for a source file
 ;;  			and efficiently update the syntax tree as the source file is edited.
 ;;
-;;  - NOTE
-;;  	- ONLY PYTHON WORKING :/
+;;  	- NOTE
+;;  		- ONLY PYTHON WORKING :/
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
