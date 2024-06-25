@@ -5,14 +5,13 @@
 	;; [[ TODO COOL THINGS TO INCLUDE INTO OUR EMACS CONFIGURATION IN THE FUTURE ]]
 	;;
 	;; [[ PLUGINS TO INCLUDE ]]
-	;;	DEVDOCS, EXPAND REGION, MULTIPLE CURSORS, YASSSSS
+	;;	AVY, DEVDOCS, EXPAND REGION, HELPFUL, MULTIPLE CURSORS
+	;;	PROJECTILE, YASSSSS
 	;;
 	;; [[ FIND FILE (DOTFILES FOLLOWED BY EVERYTHING ELSE IN ALPHABETICAL ORDER) ]]
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	;; DEPENDENCIES
+	;;
+	;;
+	;; [[ DEPENDENCIES ]]
 	;;	- CCLS, ENCHANT, FD, FZF, GREP, PKG-CONFIG, PYRIGHT, RIPGREP
 	;;	- FOR MACOS (HOMEBREW)
 	;;	- note:
@@ -105,7 +104,6 @@
 	(require 'setup-lsp)
 	(require 'setup-prog)
 	(require 'setup-lang)
-	(require 'setup-checkers)
 	(require 'setup-magit)
 	(require 'setup-miscellaneous)
 	(require 'setup-org)
@@ -116,18 +114,6 @@
 
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(wombat))
- '(package-selected-packages
-   '(moe-theme modus-themes leuven-theme gruber-darker-theme doom-themes org-bullets undo-tree magit flycheck ccls lsp-pyright pyvenv rainbow-delimiters lsp-ui company wgrep vertico marginalia embark-consult orderless)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "MartianMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width condensed)))))
+(custom-set-variables '(custom-enabled-themes '(wombat)))
+(custom-set-faces '(default ((t (:family "MartianMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width condensed)))))
 

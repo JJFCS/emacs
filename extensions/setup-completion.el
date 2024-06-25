@@ -4,8 +4,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;  COMPLETION FRAMEWORKS (MINIBUFFER - CONSULT, EMBARK, MARGINALIA, ORDERLESS, VERTICO)
-;;	- enhances the emacs search and completion experience, and also provides a united interface for project search and replace, powered by ripgrep
-;;	- enabled by several modular packages focused on enhancing the built-in `completing-read' interface
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -16,9 +14,11 @@
 (use-package orderless
 	:ensure t
 	:init
-	(setq completion-styles '(orderless basic)  ;; `basic' completion style is specified as fallback in addition to `orderless'
-	      completion-category-defaults nil      ;; serves as a default value for `completion-category-overrides'
-	      completion-category-overrides '((file (styles basic partial-completion)))  ;; `partial-completion' style lets you use wildcards for file completion & partial paths, e.g., /u/s/l for /usr/share/local
+	(setq completion-styles '(orderless basic)
+	      completion-category-defaults nil
+	      completion-category-overrides '(
+					(file (styles basic partial-completion))
+				)
 	)
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -39,17 +39,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; consult provides search & navigation commands based on emacs's completion function
-;; explanation: `completion-list-mode . consult-preview-at-point-mode'
-;;	automatic live preview at point in *COMPLETIONS* BUFFER
-;;	relevant when you use default completion UI
-;;
-;;
-;; explanation (IN ORDER): `consult-outline', `consult-find', `consult-line'
-;;	Search through the headings of the file
-;;	Search for file names recursively
-;;	Search the current buffer
-;;
 (use-package consult
 	:ensure t
 
@@ -100,7 +89,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; provides a performant and minimalistic vertical completion
 (use-package vertico
 	:ensure t
 	:init

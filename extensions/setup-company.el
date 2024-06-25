@@ -17,8 +17,8 @@
 	(define-key company-active-map (kbd "C-n"  ) 'company-select-next)
 	(define-key company-active-map (kbd "C-p"  ) 'company-select-previous)
 	
-	(setq company-minimum-prefix-length 3)
-	(setq company-idle-delay 0.1)
+	(setq company-minimum-prefix-length 2)
+	(setq company-idle-delay 0.100)
 
 	(setq company-tooltip-minimum-width 100)
 	(setq company-tooltip-maximum-width 120)
