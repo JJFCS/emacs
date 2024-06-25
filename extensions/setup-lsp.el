@@ -20,7 +20,6 @@
 ;; 	emacs may read process output in smaller chunks, which
 ;;  	can be inefficient and lead to performance bottlenecks.
 ;;
-(use-package lsp-ui :ensure t)
 (use-package lsp-mode
 	:config
 	(setq lsp-diagnostics-provider :flycheck) (setq lsp-idle-delay 0.100)
@@ -29,6 +28,17 @@
 
 	:ensure t :hook (c-mode c++-mode objc-mode python-ts-mode) (lsp-mode . lsp-ui-mode)
 	:init (setq lsp-keymap-prefix "C-c l")
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package lsp-ui :ensure t
+	:config
+	(setq lsp-ui-doc-enable t) (setq lsp-ui-peek-enable t) (setq lsp-ui-sideline-enable t)
+	(setq lsp-ui-doc-include-signature t) (setq lsp-ui-doc-show-with-cursor t) (setq lsp-ui-doc-position 'at-point)
+	(setq lsp-ui-sideline-show-code-actions t) (setq lsp-ui-sideline-show-diagnostics t) (setq lsp-ui-sideline-show-hover t)
+	(setq lsp-ui-peek-always-show t) (setq lsp-ui-peek-show-directory t)
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

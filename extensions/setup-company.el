@@ -26,13 +26,20 @@
 	;; minimum spacing between a candidate and annotation ~ aligns annotations to the right side of the tooltip
 	(setq company-tooltip-annotation-padding 3) (setq company-tooltip-align-annotations t)
 
-	(setq company-backends '
-		((company-files company-capf))  ;; company keywords
+	(setq company-backends '(
+		(company-capf company-files company-keywords)
+		(company-abbrev company-dabbrev company-dabbrev-code)
+		)
 	)
-	
+
 	:init
 	(global-company-mode 1)
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package company-box :ensure t :hook (company-mode . company-box-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

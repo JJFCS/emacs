@@ -19,10 +19,11 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package gruber-darker-theme :ensure t)
 (use-package leuven-theme        :ensure t)
 (use-package modus-themes        :ensure t)
 (use-package moe-theme           :ensure t)
+(use-package ef-themes           :ensure t)
+(use-package gruber-darker-theme :ensure t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
