@@ -1,40 +1,11 @@
 
-
 	;; -*- lexical-binding: t; -*-
-
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;; [[ TODO COOL THINGS TO INCLUDE INTO OUR EMACS CONFIGURATION IN THE FUTURE ]]
 	;;
 	;; [[ PLUGINS TO INCLUDE ]]
 	;;	DEVDOCS, EXPAND REGION, MULTIPLE CURSORS, YASSSSS
-	;;
-	;; [[ MULTIPLE CURSORS ---> TSODING CONFIG... TAKE INSPIRATION FROM KEYBINDINGS ]]
-	;; 	(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-	;; 	(global-set-key (kbd "C->")         'mc/mark-next-like-this)
-	;; 	(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
-	;; 	(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
-	;; 	(global-set-key (kbd "C-\"")        'mc/skip-to-next-like-this)
-	;; 	(global-set-key (kbd "C-:")         'mc/skip-to-previous-like-this)
-	;;
-	;; [[ DIRED ---> TSODING CONFIG... TAKE INSPIRATION ]]
-	;; 	(require 'dired-x)
-	;; 	(setq dired-omit-files
-	;; 		(concat dired-omit-files "\\|^\\..+$"))
-	;; 	(setq-default dired-dwim-target t)
-	;; 	(setq dired-listing-switches "-alh")
-	;;
-	;; [[ OMIT UNINTERESTING FILES FROM DIRED ]]
-	;; 	(require 'dired-x)
-	;; 	(setq-default dired-omit-files-p t)
-	;; 	(setq dired-omit-files
-	;; 		(concat dired-omit-files "\\|^\\..+$"))
-	;;
-	;; [[ WORD-WRAP... ADAPT FOR ORG-MODE  ]]
-	;; 	(defun rc/enable-word-wrap ()
-	;; 		(interactive)
-	;; 		(toggle-word-wrap 1))
-	;; 	(add-hook 'markdown-mode-hook 'rc/enable-word-wrap)
 	;;
 	;; [[ FIND FILE (DOTFILES FOLLOWED BY EVERYTHING ELSE IN ALPHABETICAL ORDER) ]]
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -100,15 +71,13 @@
 	(setq mac-command-key-is-meta  t)
 	(setq mac-command-modifier 'meta)
 
-	(global-hl-line-mode 1)
-
 	(setq enable-recursive-minibuffers t)  ;; support opening minibuffers inside existing minibuffers
 	(setq delete-by-moving-to-trash    t)  ;; extra layer of precaution against deleting wanted files
 	(setq org-src-preserve-indentation t)  ;; org disable automatic indentation in source code blocks
-		
+
 	(setq read-extended-command-predicate #'command-completion-default-include-p)  ;; Hide commands in M-x which do not work in the current mode
-	(setq undo-limit 10000000)  ;; emacs remembers up to 10000000 undo actions for each BUFFER
 	(setq tab-always-indent 'complete)  ;; support indentation + completion using TAB key. `completion-at-point' normally bound to M-TAB
+	(setq insert-directory-program "/opt/homebrew/bin/gls")  ;; compel DIRED employ `gls' instead OF `ls'
 
 	(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 	(setq inhibit-splash-screen t)
@@ -147,11 +116,6 @@
 
 
 
-
-
-
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -159,7 +123,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   '(rainbow-delimiters org-bullets undo-tree magit lsp-ui lsp-mode wgrep vertico marginalia embark-consult orderless company moe-theme modus-themes leuven-theme gruber-darker-theme doom-themes flycheck)))
+   '(moe-theme modus-themes leuven-theme gruber-darker-theme doom-themes org-bullets undo-tree magit flycheck ccls lsp-pyright pyvenv rainbow-delimiters lsp-ui company wgrep vertico marginalia embark-consult orderless)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

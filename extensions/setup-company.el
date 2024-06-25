@@ -1,3 +1,6 @@
+
+	;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;  - PLACEHOLDER
@@ -5,7 +8,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package company
 	:ensure t
 	:config
@@ -22,11 +25,15 @@
 
 	;; minimum spacing between a candidate and annotation ~ aligns annotations to the right side of the tooltip
 	(setq company-tooltip-annotation-padding 3) (setq company-tooltip-align-annotations t)
+
+	(setq company-backends '
+		((company-files company-capf))  ;; company keywords
+	)
 	
 	:init
 	(global-company-mode 1)
 )
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (provide 'setup-company)

@@ -1,8 +1,9 @@
+
+	;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;  - SUMMARY
 ;;  - C/CPP/OBJC
-;;
 ;;  - PYTHON
 ;;  	CD INTO .virtualenvs (stored in documents/code directory)
 ;;  	CREATE DIRECTORY TO STORE VENV FOR THE RELATED PROJECT
@@ -16,8 +17,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+(use-package pyvenv :ensure t)
 (use-package lsp-pyright
 	:ensure t
 	:hook (python-ts-mode . (lambda ()
@@ -26,11 +28,10 @@
 				)
 	      )
 )
-
-;; simple global minor mode which will replicate the changes done by virtualenv activation inside emacs
-(use-package pyvenv :ensure t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq c-basic-offset 4)
 (use-package ccls
 	:ensure t
@@ -40,7 +41,7 @@
 						       )
 	      )
 )
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (provide 'setup-lang)

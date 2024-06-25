@@ -1,28 +1,22 @@
+
+	;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;  - SUMMARY
-;;  	- RAINBOW DELIMITERS
-;;  		- color delimiters such as parentheses, brackets or braces according to their depth.
-;;  		- each successive level is highlighted in a different color for
-;;  			easy spot matching of delimiters.
-;;
-;;  	- TREESITTER
-;;  		- RUN THE FOLLOWING CMD TO INSTALL THE APPROPRIATE TREESITTER LANGUAGE PARSER
-;;  			# M-x treesit-install-language-grammar
-;;  		- a parser generator tool and an incremental parsing library.
-;;  		- can build a concrete syntax tree for a source file
-;;  			and efficiently update the syntax tree as the source file is edited.
-;;
-;;  	- NOTE
-;;  		- ONLY PYTHON WORKING :/
+;;  - RAINBOW DELIMITERS
+;;  - TREESITTER (only python working :/)
+;;  	- RUN THE FOLLOWING CMD TO INSTALL THE APPROPRIATE TREESITTER LANGUAGE PARSER
+;;		# M-x treesit-install-language-grammar
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq treesit-language-source-alist
 	'(
 		(bash   "https://github.com/tree-sitter/tree-sitter-bash"    )
@@ -38,7 +32,7 @@
 	 )
 )
 (setq treesit-extra-load-path '("~/.emacs.d/emacs-language-grammars"))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (provide 'setup-prog)
