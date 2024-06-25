@@ -114,6 +114,18 @@
 
 
 
-(custom-set-variables '(custom-enabled-themes '(wombat)))
-(custom-set-faces '(default ((t (:family "MartianMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width condensed)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(wombat))
+ '(package-selected-packages
+   '(gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes org-bullets undo-tree magit ccls lsp-pyright pyvenv rainbow-delimiters flycheck lsp-ui company-box company wgrep vertico marginalia embark-consult orderless)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "MartianMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width condensed)))))
 
