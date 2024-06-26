@@ -59,7 +59,7 @@
 
 	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil)
 	(setq display-line-numbers-type 'relative)
-	(setq insert-directory-program "gls")  ;; DIRED employ `gls' instead OF `ls'
+	(setq insert-directory-program "gls" dired-use-ls-dired t)  ;; DIRED employ `gls' instead OF `ls'
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -105,15 +105,16 @@
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	(require 'setup-completion)
-	(require 'setup-company)
-	(require 'setup-lsp)
-	(require 'setup-prog)
-	(require 'setup-lang)
-	(require 'setup-magit)
-	(require 'setup-miscellaneous)
-	(require 'setup-org)
-	(require 'setup-colors)
+		(require 'setup-helm)
+	;;	(require 'setup-completion)
+		(require 'setup-company)
+		(require 'setup-lsp)
+		(require 'setup-prog)
+		(require 'setup-lang)
+		(require 'setup-magit)
+		(require 'setup-miscellaneous)
+		(require 'setup-org)
+		(require 'setup-colors)
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -127,7 +128,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   '(gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes org-bullets undo-tree magit ccls lsp-pyright pyvenv rainbow-delimiters flycheck lsp-ui company-box company wgrep vertico marginalia embark-consult orderless)))
+   '(gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes org-bullets undo-tree magit ccls lsp-pyright pyvenv rainbow-delimiters flycheck lsp-ui company-box company helm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

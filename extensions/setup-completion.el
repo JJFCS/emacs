@@ -99,9 +99,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; allows you to edit a grep buffer & apply those changes to the file buffer like sed interactively
-;; allows you to edit the results of a grep search while inside a `grep-mode' buffer
-;; all we need is to toggle editable mode, make changes, then type C-c C-c to confirm or C-c C-k to abort
 (use-package wgrep
 	:ensure t
 	:bind (
