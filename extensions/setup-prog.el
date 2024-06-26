@@ -51,6 +51,10 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; undo-fu --> simple undo/redo
+;; undo-fu-session --> storing undo on file save
+;; vundo --> situations where a tree is needed
+;;
 (use-package vundo :ensure t :defer t)
 (use-package undo-fu-session
 	:ensure t
