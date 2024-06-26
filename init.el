@@ -105,16 +105,19 @@
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-		(require 'setup-helm)
-	;;	(require 'setup-completion)
-		(require 'setup-company)
-		(require 'setup-lsp)
-		(require 'setup-prog)
-		(require 'setup-lang)
-		(require 'setup-magit)
-		(require 'setup-miscellaneous)
-		(require 'setup-org)
 		(require 'setup-colors)
+		(require 'setup-company)
+	;;	(require 'setup-completion)
+
+		(require 'setup-helm)
+
+		(require 'setup-lsp)
+		(require 'setup-lang)
+
+		(require 'setup-miscellaneous)
+
+		(require 'setup-paramount)
+		(require 'setup-prog)
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
