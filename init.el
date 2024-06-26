@@ -59,7 +59,7 @@
 
 	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil)
 	(setq display-line-numbers-type 'relative)
-	(setq insert-directory-program "gls" dired-use-ls-dired t)  ;; DIRED employ `gls' instead OF `ls'
+	(setq insert-directory-program "/opt/homebrew/bin/gls")  ;; DIRED employ `gls' instead OF `ls'
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -113,8 +113,6 @@
 
 		(require 'setup-lsp)
 		(require 'setup-lang)
-
-		(require 'setup-miscellaneous)
 
 		(require 'setup-paramount)
 		(require 'setup-prog)

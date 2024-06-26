@@ -50,5 +50,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package vundo :ensure t :defer t)
+(use-package undo-fu-session
+	:ensure t
+	:init
+	(setq undo-fu-session-directory
+		(expand-file-name "emacs-undo/undo-fu-session/" user-emacs-directory))
+	(setq undo-fu-session-incompatible-files '
+		("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+
+	:config
+	(undo-fu-session-global-mode)
+	)
+
+
+(use-package undo-fu :ensure t
+	:bind (
+	("C-/" . undo-fu-only-undo)
+	("C-?" . undo-fu-only-redo)
+	)
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 (provide 'setup-prog)
 
