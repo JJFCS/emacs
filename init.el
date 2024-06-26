@@ -47,50 +47,56 @@
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; EMACS GENERAL SETTINGS - SANE DEFAULTS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-	(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups" user-emacs-directory))))  ;; set the directory for backup files
-	(setq auto-save-default nil auto-save-list-file-prefix nil)  ;; disable auto-saving, ensuring emacs does not create the auto-save directory
-	(setq backup-by-copying t)  ;; create backups by copying files, which avoids issues with hard links
-	(setq version-control   t)  ;; use version numbers for backups
-
-	;; create the backup directory if it does not exist
-	(unless (file-exists-p  "~/.emacs-backups"  )
-		(make-directory "~/.emacs-backups" t)
+	(defun onncera-sane ()
+		(blink-cursor-mode -1) (fringe-mode -1)  (menu-bar-mode -1) (scroll-bar-mode -1)  (tool-bar-mode -1)
+		(electric-pair-mode 1) (global-display-line-numbers-mode 1) (global-hl-line-mode 1)
+		(toggle-frame-fullscreen)		(split-window-horizontally)
 	)
+	(add-hook 'emacs-startup-hook 'onncera-sane t)
+
+	(setq-default truncate-lines t)
+	(setq inhibit-splash-screen  t)
+
+	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil)
+	(setq display-line-numbers-type 'relative)
+	(setq insert-directory-program "gls")  ;; DIRED employ `gls' instead OF `ls'
 
 
-	(setq display-line-numbers-type 'relative)  ;; enabling line numbers (relative)
-	(global-display-line-numbers-mode 1)        ;; enabling line numbers
-	(electric-pair-mode               1)        ;; enabling automatic parens pairing
-
-	(menu-bar-mode -1)                          ;; disable menu bar
-	(tool-bar-mode -1)                          ;; disable tool bar
-
-	(setq-default truncate-lines   t)           ;; enabling truncated lines
-	(setq mac-command-key-is-meta  t)
-	(setq mac-command-modifier 'meta)
-
-	(setq enable-recursive-minibuffers t)  ;; support opening minibuffers inside existing minibuffers
-	(setq delete-by-moving-to-trash    t)  ;; extra layer of precaution against deleting wanted files
-	(setq org-src-preserve-indentation t)  ;; org disable automatic indentation in source code blocks
-
-	(setq read-extended-command-predicate #'command-completion-default-include-p)  ;; Hide commands in M-x which do not work in the current mode
-	(setq tab-always-indent 'complete)  ;; support indentation + completion using TAB key. `completion-at-point' normally bound to M-TAB
-	(setq insert-directory-program "/opt/homebrew/bin/gls")  ;; compel DIRED employ `gls' instead OF `ls'
-
-	(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
-	(setq inhibit-splash-screen t)
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	;; COMMENT/UNCOMMENT CODE BLOCK TO USE A MIX OF PERSONAL COLORS & ANY OTHER THEME (CURRENTLY MODUS)
+		(defun onncera-custom-color ()  ;; CODE BLOCK - COMBINING PERSONAL COLORS & MODUS THEME
+			(set-foreground-color "burlywood3")
+			(set-background-color "#161616"   )
+			(set-cursor-color     "#40FF40"   )
+			(set-face-background hl-line-face "midnight blue") (set-face-underline 'hl-line nil)
+		)
+		(add-hook 'window-setup-hook 'onncera-custom-color t)
+		(add-hook 'after-init-hook (lambda ()
+						(load-theme 'modus-vivendi-tritanopia t)
+					   )
+		)
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-	(defun onncera-post-loading ()
-		(blink-cursor-mode -1) (fringe-mode -1) (scroll-bar-mode -1) (global-hl-line-mode 1) (set-face-underline 'hl-line nil) (split-window-horizontally)
-		(set-background-color "#161616") (set-foreground-color "burlywood3") (set-cursor-color "#40FF40") (set-face-background hl-line-face "midnight blue")
-	)
-	(add-hook 'window-setup-hook 'onncera-post-loading t)
-	(add-hook 'after-init-hook (lambda ()
-					(load-theme 'modus-vivendi-tritanopia t)
-				   )
-	)
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	;; explanation:
+	;; SCHEDULE FUNCTION TO BE CALLED WHEN EMACS HAS BEEN IDLE FOR A SPECIFIED AMOUNT OF TIME
+	;;
+	;; PARAMETERS OF `run-with-idle-timer'
+	;; SECONDS  ( 0 ): SPECIFIES NUMBER OF SECONDS EMACS SHOULD BE IDLE BEFORE FUNCTION IS RAN... 0 MEANS FUNCTION WILL RUN AS SOON AS EMACS IS NEXT IDLE
+	;; REPEAT   (NIL): SPECIFIES WHETHER TIMER SHOULD REPEAT... NIL MEANS TIMER WILL RUN ONLY ONCE
+	;; FUNCTION      : FUNCTION TO BE CALLED WHEN THE IDLE TIMER EXPIRES
+	;;
+	;; COMMENT/UNCOMMENT CODE BLOCK TO USE A THEME
+	;;	(add-hook 'window-setup-hook	(lambda ()
+	;;	(run-with-idle-timer 0 nil	(lambda ()
+	;;						(load-theme 'doom-1337 t)
+	;;						(set-face-background hl-line-face "midnight blue") (set-face-underline 'hl-line nil)
+	;;					)
+	;;	)
+	;;					)
+	;;	)
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 	(set-face-italic 'font-lock-comment-face nil)
