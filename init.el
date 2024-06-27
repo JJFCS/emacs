@@ -139,7 +139,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   '(vterm undo-fu undo-fu-session vundo rainbow-delimiters projectile highlight-indent-guides flycheck org-bullets magit lsp-pyright pyvenv lsp-ui helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
+   '(yasnippet vterm undo-fu undo-fu-session vundo rainbow-delimiters projectile multiple-cursors highlight-indent-guides flycheck expand-region avy org-bullets magit lsp-pyright pyvenv lsp-ui helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
