@@ -12,7 +12,7 @@
 	;;
 	;;
 	;; [[ DEPENDENCIES ]]
-	;;	- CCLS, ENCHANT, FD, FZF, GREP, PKG-CONFIG, PYRIGHT, RIPGREP
+	;;	- CCLS, CMAKE, ENCHANT, FD, FZF, GREP, PKG-CONFIG, PYRIGHT, RIPGREP
 	;;	- FOR MACOS (HOMEBREW)
 	;;	- note:
 	;;		- xargs brew install --casks < example.txt
@@ -48,18 +48,31 @@
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; EMACS GENERAL SETTINGS - SANE DEFAULTS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	(defun onncera-sane ()
+
+	(split-window-horizontally) (toggle-frame-fullscreen)
+
 		(blink-cursor-mode -1) (fringe-mode -1)  (menu-bar-mode -1) (scroll-bar-mode -1)  (tool-bar-mode -1)
 		(electric-pair-mode 1) (global-display-line-numbers-mode 1) (global-hl-line-mode 1)
-		(toggle-frame-fullscreen)		(split-window-horizontally)
 	)
-	(add-hook 'emacs-startup-hook 'onncera-sane t)
+	(add-hook 'emacs-startup-hook 'onncera-sane t) (add-to-list 'exec-path "/opt/homebrew/bin")
 
 	(setq-default truncate-lines t)
 	(setq inhibit-splash-screen  t)
 
-	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil)
-	(setq display-line-numbers-type 'relative)
-	(setq insert-directory-program "/opt/homebrew/bin/gls")  ;; DIRED employ `gls' instead OF `ls'
+	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil) (setq make-backup-files nil)
+	(setq display-line-numbers-type 'relative) (setq insert-directory-program "gls")
+
+
+	;; FLASH THE MODE-LINE
+	(setq visible-bell nil ring-bell-function 'double-flash-mode-line)
+	(defun double-flash-mode-line ()
+		(let ((flash-sec (/ 1.0 20)))
+			(invert-face 'mode-line)
+			(run-with-timer      flash-sec  nil #'invert-face 'mode-line)
+			(run-with-timer (* 2 flash-sec) nil #'invert-face 'mode-line)
+			(run-with-timer (* 3 flash-sec) nil #'invert-face 'mode-line)
+		)
+	)
 
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -129,7 +142,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   '(gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes org-bullets undo-tree magit ccls lsp-pyright pyvenv rainbow-delimiters flycheck lsp-ui company-box company helm)))
+   '(undo-fu undo-fu-session vundo rainbow-delimiters highlight-indent-guides flycheck org-bullets magit ccls lsp-pyright pyvenv lsp-ui helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
