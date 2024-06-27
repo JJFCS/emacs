@@ -121,12 +121,9 @@
 		(require 'setup-colors)
 		(require 'setup-company)
 	;;	(require 'setup-completion)
-
-		(require 'setup-helm)
-
+		(require 'setup-comp)
 		(require 'setup-lsp)
 		(require 'setup-lang)
-
 		(require 'setup-paramount)
 		(require 'setup-prog)
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -142,7 +139,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   '(undo-fu undo-fu-session vundo rainbow-delimiters highlight-indent-guides flycheck org-bullets magit ccls lsp-pyright pyvenv lsp-ui helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
+   '(vterm undo-fu undo-fu-session vundo rainbow-delimiters projectile highlight-indent-guides flycheck org-bullets magit lsp-pyright pyvenv lsp-ui helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

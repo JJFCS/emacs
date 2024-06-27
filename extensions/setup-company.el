@@ -18,9 +18,10 @@
 	(define-key company-active-map (kbd "C-p"  ) 'company-select-previous)
 
 	(setq company-backends '(
-		(company-capf company-clang)
+		(company-capf    company-clang)
 		(company-dabbrev company-dabbrev-code)
-		(company-files company-keywords)
+		(company-etags   company-gtags)
+		(company-files   company-keywords)
 		)
 	)
 
