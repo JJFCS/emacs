@@ -5,14 +5,12 @@
 	;; [[ TODO COOL THINGS TO INCLUDE INTO OUR EMACS CONFIGURATION IN THE FUTURE ]]
 	;;
 	;; [[ PLUGINS TO INCLUDE ]]
-	;;	AVY, DEVDOCS, EXPAND REGION, HELPFUL, MULTIPLE CURSORS
-	;;	PROJECTILE, YASSSSS
+	;;	DEVDOCS, HELPFUL
 	;;
 	;; [[ FIND FILE (DOTFILES FOLLOWED BY EVERYTHING ELSE IN ALPHABETICAL ORDER) ]]
 	;;
-	;;
 	;; [[ DEPENDENCIES ]]
-	;;	- CCLS, CMAKE, ENCHANT, FD, FZF, GREP, PKG-CONFIG, PYRIGHT, RIPGREP
+	;;	- CMAKE, FD, FZF, GREP, PYRIGHT, RIPGREP
 	;;	- FOR MACOS (HOMEBREW)
 	;;	- note:
 	;;		- xargs brew install --casks < example.txt
@@ -51,33 +49,21 @@
 
 	(split-window-horizontally) (toggle-frame-fullscreen)
 
-		(blink-cursor-mode -1) (fringe-mode -1)  (menu-bar-mode -1) (scroll-bar-mode -1)  (tool-bar-mode -1)
-		(electric-pair-mode 1) (global-display-line-numbers-mode 1) (global-hl-line-mode 1)
+		(electric-pair-mode 1) (global-display-line-numbers-mode 1) (global-hl-line-mode 1) (delete-selection-mode 1)
+		(blink-cursor-mode -1) (fringe-mode -1)  (menu-bar-mode -1) (scroll-bar-mode -1)    (tool-bar-mode -1)
 	)
 	(add-hook 'emacs-startup-hook 'onncera-sane t) (add-to-list 'exec-path "/opt/homebrew/bin")
 
 	(setq-default truncate-lines t)
 	(setq inhibit-splash-screen  t)
 
-	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil) (setq make-backup-files nil)
+	(setq auto-save-default nil) (setq auto-save-list-file-prefix nil)
 	(setq display-line-numbers-type 'relative) (setq insert-directory-program "gls")
 
 
-	;; FLASH THE MODE-LINE
-	(setq visible-bell nil ring-bell-function 'double-flash-mode-line)
-	(defun double-flash-mode-line ()
-		(let ((flash-sec (/ 1.0 20)))
-			(invert-face 'mode-line)
-			(run-with-timer      flash-sec  nil #'invert-face 'mode-line)
-			(run-with-timer (* 2 flash-sec) nil #'invert-face 'mode-line)
-			(run-with-timer (* 3 flash-sec) nil #'invert-face 'mode-line)
-		)
-	)
-
-
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	;; COMMENT/UNCOMMENT CODE BLOCK TO USE A MIX OF PERSONAL COLORS & ANY OTHER THEME (CURRENTLY MODUS)
-		(defun onncera-custom-color ()  ;; CODE BLOCK - COMBINING PERSONAL COLORS & MODUS THEME
+	;; COMMENT/UNCOMMENT CODE BLOCK TO USE A MIX OF PERSONAL COLORS & ANY OTHER THEME (CURRENTLY  MODUS)
+		(defun onncera-custom-color ()
 			(set-foreground-color "burlywood3")
 			(set-background-color "#161616"   )
 			(set-cursor-color     "#40FF40"   )
@@ -103,7 +89,7 @@
 	;; COMMENT/UNCOMMENT CODE BLOCK TO USE A THEME
 	;;	(add-hook 'window-setup-hook	(lambda ()
 	;;	(run-with-idle-timer 0 nil	(lambda ()
-	;;						(load-theme 'doom-1337 t)
+	;;						(load-theme 'doom-palenight t)
 	;;						(set-face-background hl-line-face "midnight blue") (set-face-underline 'hl-line nil)
 	;;					)
 	;;	)
@@ -139,7 +125,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   '(yasnippet vterm undo-fu undo-fu-session vundo rainbow-delimiters projectile multiple-cursors highlight-indent-guides flycheck expand-region avy org-bullets magit lsp-pyright pyvenv lsp-ui helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
+   '(vterm undo-fu-session undo-fu vundo rainbow-delimiters multiple-cursors highlight-indent-guides flycheck expand-region org-bullets magit lsp-pyright pyvenv lsp-ui swiper-helm helm-c-yasnippet helm-projectile helm-flx helm-descbinds helm company-box company gruber-darker-theme ef-themes moe-theme modus-themes leuven-theme doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

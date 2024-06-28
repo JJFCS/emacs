@@ -2,23 +2,16 @@
 	;; -*- lexical-binding: t; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;  - PLACEHOLDER
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package doom-themes
-	:ensure t
+;; ENABLE OR DISABLE BOLD & ITALICS UNIVERSALLY (`t' <--> `nil')
+;; ENABLE ON ERROR MODE-LINE FLASHING
+;; ENRICH ORG-MODE'S NATIVE FONTIFICATION
+(use-package doom-themes :ensure t
 	:config
-	(setq doom-themes-enable-bold t) (setq doom-themes-enable-italic t)  ;; disable universally (`t' <--> `nil')
-	(doom-themes-org-config)  ;; Corrects (and improves) org-mode's native fontification
+	(setq doom-themes-enable-bold t) (setq doom-themes-enable-italic t)
+	(doom-themes-visual-bell-config) (doom-themes-org-config)
 )
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package leuven-theme        :ensure t)
 (use-package modus-themes        :ensure t)
 (use-package moe-theme           :ensure t)

@@ -3,7 +3,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;  - TREESITTER (only python working :/)
+;;  - TREESITTER
 ;;  	- RUN THE FOLLOWING CMD TO INSTALL THE APPROPRIATE TREESITTER LANGUAGE PARSER
 ;;		# M-x treesit-install-language-grammar
 ;;
@@ -11,12 +11,8 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package avy :ensure t :bind ("C-c SPC" . avy-goto-char))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package expand-region :ensure t :bind ("C-=" . er/expand-region))
+;; CONTRACT THE REGION BY PREFIXING THE SHORTCUT YOU DEFINED WITH A NEGATIVE ARGUMENT: C-- C-'
+(use-package expand-region :ensure t :bind ("C-\'" . er/expand-region))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -28,33 +24,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package highlight-indent-guides :ensure t :defer t
 	:config
-	(setq highlight-indent-guides-method 'bitmap)
 	(setq highlight-indent-guides-bitmap-function #'highlight-indent-guides--bitmap-line)
-
-	:hook (prog-mode . highlight-indent-guides-mode)
+	(setq highlight-indent-guides-method 'bitmap)
+	:hook
+	(prog-mode    . highlight-indent-guides-mode)
 	)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package multiple-cursors :ensure t :defer t
+	:config (setq mc/list-file "~/.emacs.d/emacs-mc/mc-lists.el")
 	:bind (
-	("C-S-c C-S-c" . mc/edit-lines)
-	("C-S-c C-a"   . mc/edit-beginnings-of-lines)
-	("C-S-c C-e"   . mc/edit-ends-of-lines)
-	("C-c C->" . mc/mark-all-like-this)
 	("C-c C-<" . mc/mark-all-in-region)
-	("C->" . mc/mark-next-like-this)
-	("C-<" . mc/mark-previous-like-this)
-	("C-|" . mc/skip-to-next-like-this)
-	("C-:" . mc/skip-to-previous-like-this)
+	("C-c C->" . mc/mark-all-like-this)
+	("C-S-c C-S-c" . mc/edit-lines                )
+	("C-<"         . mc/skip-to-previous-like-this)
+	("C->"         . mc/skip-to-next-like-this    )
+	("M-p"         . mc/mark-previous-like-this   )
+	("M-n"         . mc/mark-next-like-this       )
 	)
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package projectile :ensure t :defer t :config (projectile-mode 1))
+(use-package projectile :ensure t :defer t
+	:config
+	(setq projectile-known-projects-file "~/.emacs.d/emacs-projectile/projectile-bookmarks.eld")
+	(projectile-mode 1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -83,11 +81,15 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; undo-fu --> simple undo/redo
-;; undo-fu-session --> storing undo on file save
-;; vundo --> situations where a tree is needed
-;;
-(use-package vundo :ensure t :defer t)
+(use-package vundo   :ensure t :defer t)
+(use-package undo-fu :ensure t
+	:bind (
+	("C-/" . undo-fu-only-undo)
+	("C-?" . undo-fu-only-redo)
+	)
+)
+
+
 (use-package undo-fu-session
 	:ensure t
 	:init
@@ -99,14 +101,6 @@
 	:config
 	(undo-fu-session-global-mode)
 	)
-
-
-(use-package undo-fu :ensure t
-	:bind (
-	("C-/" . undo-fu-only-undo)
-	("C-?" . undo-fu-only-redo)
-	)
-)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

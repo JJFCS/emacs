@@ -2,40 +2,30 @@
 	;; -*- lexical-binding: t; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;  - PLACEHOLDER
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package company :ensure t
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package company
-	:ensure t
 	:config
-	
 	(define-key company-active-map (kbd "C-y"  ) 'company-complete-selection)
 	(define-key company-active-map (kbd "C-n"  ) 'company-select-next)
 	(define-key company-active-map (kbd "C-p"  ) 'company-select-previous)
 
 	(setq company-backends '(
-		(company-capf    company-clang)
+		(company-abbrev  company-capf company-clang)
 		(company-dabbrev company-dabbrev-code)
 		(company-etags   company-gtags)
-		(company-files   company-keywords)
+		(company-files   company-keywords company-yasnippet)
 		)
 	)
 
 	(setq company-minimum-prefix-length 2)
 	(setq company-idle-delay 0.100)
 
-	(setq company-tooltip-minimum-width 100)
-	(setq company-tooltip-maximum-width 120)
-
-	;; minimum spacing between a candidate and annotation ~ aligns annotations to the right side of the tooltip
-	(setq company-tooltip-annotation-padding 3) (setq company-tooltip-align-annotations t)
+	(setq company-tooltip-minimum-width 60)
+	(setq company-tooltip-maximum-width 80)
 
 	:init
 	(global-company-mode 1)
+
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
