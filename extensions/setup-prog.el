@@ -34,7 +34,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package multiple-cursors :ensure t :defer t
-	:config (setq mc/list-file "~/.emacs.d/emacs-mc/mc-lists.el")
+	:init (setq mc/list-file "~/.emacs.d/emacs-mc/mc-lists.el")
 	:bind (
 	("C-c C-<" . mc/mark-all-in-region)
 	("C-c C->" . mc/mark-all-like-this)
