@@ -25,11 +25,13 @@ LEGEND
         )
 )
 
-;; we make use of melpa the most so we priortise that first
-(setq package-archive-priorities '(("melpa" . 10) ("elpa" . 5)))
+(setq package-archive-priorities '(
+    ("melpa" . 10) ("elpa" . 5)
+        )
+)
 
 (unless (package-installed-p 'use-package) (package-refresh-contents) (package-install 'use-package))
-(require 'use-package)
+                    (require 'use-package)
 
 #+end_src
 
@@ -74,12 +76,10 @@ LEGEND
 (setq savehist-file     "~/.emacs.d/onemacs-cache/history")  ;; NOTE - hardcoding the path
 (recentf-mode 1) (savehist-mode 1)  ;; NOTE - to del M-x history go to onemacs-cache & delete the "history" file
 
-(global-auto-revert-mode)           ;; auto refresh file buffers when the file on disk changes outside of emacs
-(global-visual-wrap-prefix-mode)    ;; wrapped lines respect the indentation of the original file
-(global-display-line-numbers-mode)  ;; TODO - may want to use a hook to enable in certain modes only - helps with performance
-(global-hl-line-mode)
-
 (setq make-backup-files nil)
 (setq auto-save-default nil) (setq auto-save-list-file-prefix nil)
+
+(global-auto-revert-mode) (global-hl-line-mode) (global-visual-wrap-prefix-mode)
+(global-display-line-numbers-mode)  ;; TODO - may want to use a hook to enable in certain modes only - helps with performance
 
 #+end_src

@@ -1,0 +1,100 @@
+mogman’s minimal emacs - mme
+
+LEGEND
+
+"!" == HEADER
+"-" == NOTES
+"$" == SUBTOPIC
+
+! FUNCTIONS & VARIABLES
+- these are functions & variables that need to be defined asap
+$ function 1 (done by AI) - check!
+#+begin_src emacs-lisp
+(defun onncera-smart-beginning-of-line () "toggle between indentation and the beginning of the line"
+    (interactive)
+    (let ((old-point (point))) (back-to-indentation) (when (= old-point (point)) (beginning-of-line)
+        )
+    )
+)
+#+end_src
+
+$ function 2 (done by AI) - check!
+#+begin_src emacs-lisp
+(defun onncera-disable-italics ()
+    (interactive)
+    (dolist (face (face-list))
+      (when (memq (face-attribute face     :slant  nil  t)
+                 '(italic oblique))
+              (set-face-attribute face nil :slant 'normal)
+      )))
+#+end_src
+
+$ function 3 (done by AI) - check!
+#+begin_src emacs-lisp
+(defun onncera-switch-theme () "switch themes and disable italics and restore fonts"
+    (interactive)
+    (let ((theme (intern (completing-read "Load theme: " (custom-available-themes)))))
+          (mapc #'disable-theme custom-enabled-themes)
+          (load-theme     theme t) (onncera-disable-italics)
+          (set-face-attribute 'default        nil :family "JetBrainsMonoNL Nerd Font" :height 140 :width 'condensed :weight 'regular)
+          (set-face-attribute 'fixed-pitch    nil :family "JetBrainsMonoNL Nerd Font" :height 140 :width 'condensed :weight 'regular)
+          (set-face-attribute 'variable-pitch nil :family "CMU Concrete"              :height 140)
+                                                                                                 )
+                                                                                                 )
+#+end_src
+
+$ function 4 (done by AI) - check!
+#+begin_src emacs-lisp
+(defun onncera-custom-tab-line (buffer &optional _buffers)
+    (let* ((name (buffer-name buffer))
+           (name
+           (if (string-match "\\`\\([^<]+\\)<\\([^>]+\\)>\\'" name)
+               (format "%s · %s"
+                   (match-string 1 name)
+                   (truncate-string-to-width
+                   (match-string 2 name) 8 nil nil "…"))
+               name))
+           (name (truncate-string-to-width name 22 nil nil "…")))
+           (concat " " name " "))
+)
+#+end_src
+
+$ function 5 (done by AI) - check!
+#+begin_src emacs-lisp
+(defun onncera-conceal-asterisk (candidate) "HIDE STARRED BUFFERS UNTIL `*` IS TYPED IN THE MINIBUFFER"
+    (let* ((name   (if (consp candidate) (car candidate) candidate))
+           (window (active-minibuffer-window)))
+    (or
+            (not (string-prefix-p "*" name))
+            (and  window
+                 (with-current-buffer (window-buffer window)
+                     (string-search "*" (minibuffer-contents-no-properties))))))
+)
+
+(defun onncera-sort-starred-boofers (original prompt &optional default require-match predicate)
+    "filter starred buffers while preserving existing predicates"
+    (funcall original prompt default require-match
+        (lambda (candidate)
+            (and
+                (or (null predicate) (funcall predicate candidate))
+                (onncera-conceal-asterisk candidate))))
+)
+
+(advice-add 'read-buffer :around #'onncera-sort-starred-boofers)
+(defun onncera-buries-boofers () "obliterates a boofer . able to conceal asterisk boofers"
+    (interactive)
+    (kill-buffer
+    (read-buffer "KILL BUFFER - " (current-buffer) t)))
+
+(keymap-global-set "C-x k" #'onncera/kill-buffer)  ;; TODO - move to keymap org file
+#+end_src
+
+$ function 6 (done by AI) - check!
+#+begin_src emacs-lisp
+(defun onncera-whitespace-cleanup () "translate entire boofer to spaces on save"
+    (delete-trailing-whitespace)
+    (untabify (point-min)
+              (point-max)
+                        )
+                        )
+#+end_src
