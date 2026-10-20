@@ -85,8 +85,6 @@ $ function 5 (done by AI) - check!
     (interactive)
     (kill-buffer
     (read-buffer "KILL BUFFER - " (current-buffer) t)))
-
-(keymap-global-set "C-x k" #'onncera/kill-buffer)  ;; TODO - move to keymap org file
 #+end_src
 
 $ function 6 (done by AI) - check!
