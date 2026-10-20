@@ -1,0 +1,162 @@
+mogman’s minimal emacs - mme
+
+LEGEND
+
+"!" == HEADER
+"-" == NOTES
+"$" == SUBTOPIC
+
+! COMPLETIONS & MINIBUFFER
+$ emacs 31 minibuffer
+#+begin_src emacs-lisp
+
+(use-package minibuffer
+    :config (setq completions-sort 'historical)  ;; 'alphabetical'
+    (setq completion-ignore-case t)
+    (setq completion-show-help nil)
+    (setq completion-show-inline-help t) (setq completion-eager-update t) (setq completions-max-height 15)
+    (setq read-buffer-completion-ignore-case t) (setq read-file-name-completion-ignore-case t)
+)
+
+#+end_src
+
+! MISCELLANEOUS
+$ ORDERLESS
+#+begin_src emacs-lisp
+(use-package orderless :ensure t
+    :config
+    (setq completion-styles '(orderless basic)
+            )
+)
+#+end_src
+
+$ CORFU
+#+begin_src emacs-lisp
+
+(use-package corfu :ensure t
+    :config
+    (keymap-unset corfu-map "<tab>") (keymap-unset corfu-map "TAB")
+    (setq corfu-quit-no-match t) (setq corfu-quit-at-boundary t)
+    (setq corfu-auto t) (setq corfu-cycle t)
+    (set-face-attribute 'corfu-current nil :background "#524F67" :foreground "#E0DEF4" :weight 'bold)  ;; TODO - can remove?
+)
+
+#+end_src
+
+$ CAPE
+#+begin_src emacs-lisp
+(use-package cape :ensure t :demand t
+    :config
+    (defun onncera-cape-prog-setup ()
+        (add-hook 'completion-at-point-functions #'cape-file 80 t)
+        (add-hook 'completion-at-point-functions  (cape-capf-sort
+                  (cape-capf-super
+                 #'cape-dabbrev
+                 #'cape-keyword
+                  )
+              )
+          90 t
+        )
+    )
+    (add-hook 'prog-mode-hook #'onncera-cape-prog-setup)
+)
+#+end_src
+
+$ SHELL-POP
+#+begin_src emacs-lisp
+(use-package shell-pop :ensure t
+    :bind ("M-`" . shell-pop)
+    :config
+    (with-eval-after-load 'term
+    (define-key term-raw-map (kbd "M-`") #'shell-pop))  ;; needed for my personal keybind
+    (setq   shell-pop-universal-key "M-`")              ;; the keybind to toggle the shell window
+    (setq   shell-pop-window-position "bottom")
+    (setq   shell-pop-full-span nil)
+    (setq   shell-pop-term-shell shell-file-name)
+    (setq   shell-pop-window-size 50)
+    (setopt shell-pop-shell-type '("ansi-term" "*ansi-term*" (lambda ()  ;; `setopt is important
+                                   (ansi-term shell-pop-term-shell))))
+    (setq   shell-pop-autocd-to-working-dir nil))
+#+end_src
+
+$ SPEEDBAR
+#+begin_src emacs-lisp
+
+(use-package speedbar
+    :config
+    (setq speedbar-show-unknown-files t)
+    (setq speedbar-prefer-window t)
+    (add-hook 'speedbar-mode-hook #'onncera-speedbar-setup-font)
+)
+
+#+end_src
+
+$ TAB LINE
+#+begin_src emacs-lisp
+
+;; TODO - need to test more...
+
+(use-package tab-line :config
+    (setq tab-line-new-button-show t) (setq tab-line-close-button-show t) (setq tab-line-close-tab-function 'kill-buffer)
+    (setq tab-line-tab-name-function #'onncera-custom-tab-line) (setq tab-line-tabs-function #'tab-line-tabs-fixed-window-buffers)
+    (setq tab-line-separator " ")
+    (dolist (face '(tab-line-tab tab-line-tab-current))
+    (set-face-attribute face nil
+            :inherit 'tab-line
+            :background "#282828"
+            :foreground "#FFFFFF"
+            :weight 'normal
+            :box '(:line-width (1 . 2) :color "#282828")))
+    (set-face-attribute 'tab-line nil
+            :family "Iosevka Nerd Font Mono"
+            :height 140
+            :background "#0B0B0B"
+            :foreground "#A0A0A0"
+            :box nil)
+    (set-face-attribute 'tab-line-tab-inactive nil
+            :inherit 'tab-line
+            :background "#151515"
+            :foreground "#999999"
+            :weight 'normal
+            :box '(:line-width (1 . 2) :color "#151515"))
+    (global-tab-line-mode 1)
+)
+
+#+end_src
+
+$ IMENU
+#+begin_src emacs-lisp
+(use-package imenu
+    :config (setq imenu-auto-rescan t) (setq imenu-level-separator "/") (setq imenu-max-item-no-type 0))
+#+end_src
+
+$ MULTIPLE CURSORS
+#+begin_src emacs-lisp
+(use-package multiple-cursors :ensure t :defer t
+    :config (setq mc/always-run-for-all t)  ;; stop annoying me with "y" confirmations
+    :init   (setq mc/list-file "~/.emacs.d/onemacs-cache/mc-lists.el"))
+#+end_src
+
+$ UNDO & REDO
+#+begin_src emacs-lisp
+(use-package vundo   :ensure t :defer t)
+(use-package undo-fu :ensure t
+    :bind (
+    ("C-/" . undo-fu-only-undo)
+    ("C-?" . undo-fu-only-redo)
+    )
+)
+
+
+(use-package undo-fu-session
+    :ensure t
+    :init
+    (setq undo-fu-session-directory
+        (expand-file-name "onemacs-cache/undo-fu-session/" user-emacs-directory))
+    (setq undo-fu-session-incompatible-files '
+        ("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+
+    :config
+    (undo-fu-session-global-mode)
+    )
+#+end_src
