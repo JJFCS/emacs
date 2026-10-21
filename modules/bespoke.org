@@ -114,3 +114,16 @@ $ function 7 (done by AI) - check!
     (buffer-face-set 'onncera-speedbar-font))
 
 #+end_src
+
+$ PLAYGROUND
+#+begin_src emacs-lisp
+(defun onncera-choose-font ()
+    (interactive)
+    (let ((possible '("JetBrainsMonoNL Nerd Font" "Lexia Mono VF Trial" "LythMonoSquare Nerd Font" "MartianMono Nerd Font Mono")))
+    (let ((selection (completing-read "CHOOSE FONT - " possible)))
+
+    (set-face-attribute 'default        nil :family selection :height 140 :width 'condensed :weight 'regular)
+    (set-face-attribute 'fixed-pitch    nil :family selection :height 140 :width 'condensed :weight 'regular)
+    (message "SELECTED FONT - %s" selection
+        ))))
+#+end_src

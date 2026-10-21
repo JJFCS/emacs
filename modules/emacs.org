@@ -130,6 +130,15 @@ $ IMENU
     :config (setq imenu-auto-rescan t) (setq imenu-level-separator "/") (setq imenu-max-item-no-type 0))
 #+end_src
 
+$ IBUFFER
+#+begin_src emacs-lisp
+(use-package ibuffer
+    :config
+    (setq ibuffer-default-display-maybe-show-predicates nil)  ;; ensures we initially hide buffers matching those predicates - `*`
+    (add-to-list 'ibuffer-maybe-show-predicates "^\\*")  ;; note - C-u g toggles visibility
+)
+#+end_src
+
 $ MULTIPLE CURSORS
 #+begin_src emacs-lisp
 (use-package multiple-cursors :ensure t :defer t
@@ -159,4 +168,25 @@ $ UNDO & REDO
     :config
     (undo-fu-session-global-mode)
     )
+#+end_src
+
+$ HIGHLIGHT INDENT GUIDES
+#+begin_src emacs-lisp
+(use-package highlight-indent-guides :ensure t
+    :config
+    (setq highlight-indent-guides-method   'bitmap)
+    ;; (setq highlight-indent-guides-auto-enabled nil)  ;; TODO - use this settings if the color is wonky
+
+    ;; (set-face-attribute 'highlight-indent-guides-character-face nil
+    ;;     :foreground "#444444"
+    ;;     :background 'unspecified
+    ;;     :inverse-video nil
+    ;;     :box nil
+    ;;     :underline nil
+    ;;     :overline  nil)
+
+    ;; (define-globalized-minor-mode global-highlight-indent-guides-mode
+    ;;     highlight-indent-guides-mode (lambda ()
+    ;;         (when (derived-mode-p 'prog-mode) (highlight-indent-guides-mode 1))))
+)
 #+end_src
