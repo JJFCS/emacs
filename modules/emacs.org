@@ -86,6 +86,7 @@ $ SPEEDBAR
     :config
     (setq speedbar-show-unknown-files t)
     (setq speedbar-prefer-window t)
+    (setq speedbar-directory-button-trim-method 'trim)
     (add-hook 'speedbar-mode-hook #'onncera-speedbar-setup-font)
 )
 
