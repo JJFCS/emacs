@@ -108,8 +108,8 @@ $ function 7 (done by AI) - check!
 (defface onncera-speedbar-font '((t (
     :family "Iosevka Nerd Font Mono"
     :height 120
-    :weight normal
-    ))))
+    :weight normal)))
+    "Font used only in SB")
 (defun onncera-speedbar-setup-font () "use a separate font for speedbar"
     (buffer-face-set 'onncera-speedbar-font))
 
