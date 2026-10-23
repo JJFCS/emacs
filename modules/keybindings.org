@@ -26,7 +26,9 @@ $ onncera-a-map (done by AI) - check!
 (defvar onncera-a-map (make-sparse-keymap) "onncera C-c a prefix")
 (global-set-key (kbd "C-c a") onncera-a-map)
 (define-key onncera-a-map (kbd "c") #'onncera-switch-theme)
+(define-key onncera-a-map (kbd "f") #'onncera-choose-fonts)
 (define-key onncera-a-map (kbd "i") #'imenu)
+(define-key onncera-a-map (kbd "l") #'onncera-set-compact-line-height)
 
 (global-set-key (kbd "M-o") 'other-window)
 

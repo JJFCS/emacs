@@ -84,7 +84,7 @@ $ function 5 (done by AI) - check!
 
 $ PLAYGROUND
 #+begin_src emacs-lisp
-(defun onncera-choose-font ()
+(defun onncera-choose-fonts ()
     (interactive)
     (let ((possible '("JetBrainsMonoNL Nerd Font" "Lexia Mono VF Trial" "LythMonoSquare Nerd Font" "MartianMono Nerd Font Mono")))
     (let ((selection (completing-read "CHOOSE FONT - " possible)))
@@ -93,4 +93,18 @@ $ PLAYGROUND
     (set-face-attribute 'fixed-pitch    nil :family selection :height 140 :width 'condensed :weight 'regular)
     (message "SELECTED FONT - %s" selection
         ))))
+
+
+(defun onncera-set-compact-line-height (pixels) "SET COMPACT LINE HEIGHT TO PIXELS THEN REFRESH THE DISPLAY"
+    (interactive "ncompact line height (pixels): ")
+    (unless (boundp 'onncera-line-height-compact-pixels)
+        (user-error "this emacs build does not support compact line height"))
+    (unless (and (integerp pixels) (>= pixels 0))
+        (user-error "compact line height cannot be a negative int"))
+    (setq onncera-line-height-compact-pixels pixels)
+        (force-window-update nil)
+        (redisplay t)
+        (message "compact line height: §d px" pixels))
+(when (boundp 'onncera-line-height-compact-pixels)  ;; start emacs with compact lines
+    (onncera-set-compact-line-height 4))
 #+end_src
