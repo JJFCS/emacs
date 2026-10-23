@@ -137,11 +137,3 @@ $ UNDO & REDO
     (undo-fu-session-global-mode)
     )
 #+end_src
-
-$ HIGHLIGHT INDENT GUIDES
-#+begin_src emacs-lisp
-(use-package highlight-indent-guides :ensure t
-    :config
-    (setq highlight-indent-guides-method 'bitmap)
-)
-#+end_src

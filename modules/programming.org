@@ -60,7 +60,7 @@ $ VARIOUS PROGRAMMING LANGUAGES (done by AI) - check!
 (add-hook 'prog-mode-hook
     (lambda ()
         (git-gutter-mode 1) (corfu-mode 1)
-        (whitespace-mode 1) (highlight-indent-guides-mode 1)
+        (whitespace-mode 1)
         (setq-local tab-width 4)
         (setq-local indent-tabs-mode nil)
     )
