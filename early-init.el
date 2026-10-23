@@ -2,7 +2,7 @@
 ;; -*- lexical-binding: t; -*-
 
 ;; disable UI elements before UI initialization
-(setq menu-bar-mode nil)
+(setq menu-bar-mode nil)  ;; TODO - remove this if we want menu bar
 (setq tool-bar-mode nil)
 
 ;; this changes where emacs stores native compilation (.eln) files
