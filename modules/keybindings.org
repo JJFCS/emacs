@@ -34,6 +34,7 @@ $ onncera-a-map (done by AI) - check!
 
 $ remaps
 #+begin_src emacs-lisp
+(global-set-key [remap list-buffers] 'ibuffer)
 (global-set-key [remap move-beginning-of-line] 'onncera-smart-beginning-of-line)
 (global-set-key [remap kill-buffer] 'onncera-buries-boofers)
 #+end_src
